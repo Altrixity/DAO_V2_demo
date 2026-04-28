@@ -1,0 +1,122 @@
+header {
+    color:  rgb(255, 255, 255);
+    background-color:black;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-left: 250px;
+    margin-right: 250px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 500px;
+}
+body {
+    background-color: black;
+}
+
+.AppsGames {
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+
+    padding-top: 0px;
+}
+.AppsGamesText {
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+
+    padding-top: 20px;
+}
+.icon {
+    width: 100px;
+    height: 100px;
+    padding-left:10px;
+    padding-right: 10px;
+    border-radius: 30px;
+}
+
+.icon:hover {
+    width: 120px;
+    height: 120px;
+    padding-left:10px;
+    padding-right: 10px;
+    border-radius: 30px;
+}
+.welcome {
+    justify-self: center;
+    color: rgb(0, 183, 255);
+    font-size: 50px;
+    padding-top: 15px;
+
+}
+.welcome:hover {
+    justify-self: center;
+    color: rgb(88, 208, 255);
+    text-decoration: underline;
+    font-size: 50px;
+    padding-top: 15px;
+
+}
+.linebg {
+    margin-left: 350px;
+    margin-right: 350px;
+    border-color: rgb(0, 183, 255);
+    color:rgb(0, 183, 255) ;
+}
+.welcomebottom {
+    justify-self: center;
+    color: rgb(0, 183, 255);
+    font-size: 25px;
+
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    text-decoration: none;
+    color: rgb(0, 183, 255);
+}
+.textabove {
+    padding-left:40px;
+    padding-right: 40px;
+    color: white;
+}
+.colorchangev2 {
+    color:  rgb(0, 183, 255);
+}
+.cloakbutton {
+    margin-top: 80px;
+    padding: 10px;
+    border: 2px;
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+}
+.cloakbutton:hover {
+    margin-top: 80px;
+    padding: 10px;
+    border: 2px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+}
+.cloakstyle {
+    display: flex;
+    justify-content: center;
+}
+iframe {
+    margin-left: 300px;
+    margin-top: 50px;
+    justify-content: center;
+}
+.warnload {
+    justify-self: center;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 20px;
+    text-align: center;
+}

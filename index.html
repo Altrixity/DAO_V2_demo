@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home | DAO V2</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="rain"></canvas>
+
+<header>
+    <h2>DAO</h2><h2 class="colorchangev2">V2</h2>
+</header>
+
+<div>
+    <h3 class="welcome">Welcome to Do Anything Online V2</h3>
+    <hr class="linebg">
+    <h4 class="welcomebottom">By <a href="https://x.com/altrixity">~ALT.</a></h4>
+
+    <div class="AppsGamesText">
+        <p class="textabove">Games</p>
+        <p class="textabove">Apps</p>
+        <p class="textabove">Settings</p>
+        <p class="textabove">About</p>
+    </div>
+
+    <div class="AppsGames">
+        <a href="JogosEscondidos.html"><img class="icon" src="Icons/gameicon.png"></a>
+        <img class="icon" src="Icons/appicon.png">
+        <img class="icon" src="Icons/Settingsicon.png">
+        <img class="icon" src="Icons/Abouticon.png">
+    </div>
+
+    <div class="cloakstyle">
+        <button class="cloakbutton" onclick="cloakPage()">Clock This Page!</button>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("rain");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let raindrops = [];
+
+for (let i = 0; i < 400; i++) {
+    raindrops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        length: Math.random() * 20 + 10,
+        speed: Math.random() * 4 + 4
+    });
+}
+
+function drawRain() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = "rgba(180, 180, 180, 0.7)";
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i < raindrops.length; i++) {
+        let r = raindrops[i];
+
+        ctx.beginPath();
+        ctx.moveTo(r.x, r.y);
+        ctx.lineTo(r.x, r.y + r.length);
+        ctx.stroke();
+
+        r.y += r.speed;
+
+        if (r.y > canvas.height) {
+            r.y = -20;
+            r.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+function animate() {
+    drawRain();
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+animate();
+
+function cloakPage() {
+    const newTab = window.open('about:blank', '_blank');
+    const pageContent = document.documentElement.outerHTML;
+
+    newTab.document.open();
+    newTab.document.write(pageContent);
+    newTab.document.close();
+
+    window.location.replace('https://www.drive.google.com');
+}
+</script>
+
+</body>
+</html>

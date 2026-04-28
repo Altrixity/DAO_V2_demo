@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Games | DAO V2</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="rain"></canvas>
+
+<header>
+    <h2>DAO</h2><h2 class="colorchangev2">V2</h2>
+</header>
+
+<div>
+    <h3 class="welcome">Built in Games</h3>
+    <p class="warnload">Some Games may not load, and some may have ads. We are truly sorry and hope to resolve this issue soon.</p>
+    <br>
+    <hr class="linebg">
+    <br>
+
+    <div class="AppsGames">
+        <a href="player.html?game=DokiDoki"><img class="icon" src="Icons/DokiDokiIcon.png"></a>
+        <a href="player.html?game=OVOfixed"><img class="icon" src="Icons/ovofixedIcon.png"></a>
+        <a href="player.html?game=BasketRando"><img class="icon" src="Icons/BasketRandomIcon.png"></a>
+        <a href="player.html?game=SonicCD"><img class="icon" src="Icons/SonicCDIcon.png"></a>
+        <a href="player.html?game=CaseohsBasics"><img class="icon" src="Icons/CaseohIcon.png"></a>
+        <a href="player.html?game=Dadish"><img class="icon" src="Icons/DadishIcon.png"></a>
+        <a href="player.html?game=09"><img class="icon" src="Icons/09icon.png"></a>
+        <a href="player.html?game=BitLife"><img class="icon" src="Icons/BitLifeIcon.png"></a>
+    </div>
+
+    <div class="cloakstyle">
+        <button class="cloakbutton" onclick="cloakPage()">Clock This Page!</button>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("rain");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let raindrops = [];
+
+for (let i = 0; i < 400; i++) {
+    raindrops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        length: Math.random() * 20 + 10,
+        speed: Math.random() * 4 + 4
+    });
+}
+
+function drawRain() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = "rgba(180, 180, 180, 0.7)";
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i < raindrops.length; i++) {
+        let r = raindrops[i];
+
+        ctx.beginPath();
+        ctx.moveTo(r.x, r.y);
+        ctx.lineTo(r.x, r.y + r.length);
+        ctx.stroke();
+
+        r.y += r.speed;
+
+        if (r.y > canvas.height) {
+            r.y = -20;
+            r.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+function animate() {
+    drawRain();
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+animate();
+
+function cloakPage() {
+    const newTab = window.open('about:blank', '_blank');
+    const pageContent = document.documentElement.outerHTML;
+
+    newTab.document.open();
+    newTab.document.write(pageContent);
+    newTab.document.close();
+
+    window.location.replace('https://www.drive.google.com');
+}
+</script>
+
+</body>
+</html>
