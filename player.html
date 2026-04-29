@@ -107,9 +107,9 @@ animate();
 
 // Load game from URL (?game=Name)
 const params = new URLSearchParams(window.location.search);
-const view = params.get("view");
+const game = params.get("view");
 
-if (view) {
+if (game) {
     document.getElementById("gameFrame").src = "GAMESHTML/" + view + ".html";
 }
 
