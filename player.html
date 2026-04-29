@@ -8,11 +8,6 @@
             margin: 0;
             overflow: hidden;
             background: black;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
 
         canvas {
@@ -22,21 +17,12 @@
             z-index: -1;
         }
 
-        iframe {
+        embed {
             width: 1000px;
             height: 600px;
             border: 10px solid rgb(113, 210, 255);
             position: relative;
             z-index: 1;
-        }
-
-        header {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 2;
-            display: flex;
-            gap: 5px;
         }
 
         #fsBtn {
@@ -58,12 +44,12 @@
 <canvas id="rain"></canvas>
 
 <header>
-    <h2>DAO</h2><h2 class="colorchangev2">V2</h2><h2>Player</h2>
+    <h2>DAO</h2><h2 class="colorchangev2">V2 </h2><h2>Player</h2>
 </header>
 
 <button id="fsBtn" onclick="toggleFullscreen()">Fullscreen</button>
 
-<iframe id="viewFrame"></iframe>
+<embed id="viewFrame"></embed>
 
 <script>
 const canvas = document.getElementById("rain");
