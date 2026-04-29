@@ -2,12 +2,17 @@
 <html>
 <head>
     <link rel="stylesheet" href="main.css">
-    <title>Game Loader</title>
+    <title>View Loader</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background: black;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         canvas {
@@ -23,6 +28,15 @@
             border: 10px solid rgb(113, 210, 255);
             position: relative;
             z-index: 1;
+        }
+
+        header {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            display: flex;
+            gap: 5px;
         }
 
         #fsBtn {
@@ -44,12 +58,12 @@
 <canvas id="rain"></canvas>
 
 <header>
-    <h2>DAO</h2><h2 class="colorchangev2">V2 </h2><h2>Player</h2>
+    <h2>DAO</h2><h2 class="colorchangev2">V2</h2><h2>Player</h2>
 </header>
 
 <button id="fsBtn" onclick="toggleFullscreen()">Fullscreen</button>
 
-<iframe id="gameFrame"></iframe>
+<iframe id="viewFrame"></iframe>
 
 <script>
 const canvas = document.getElementById("rain");
@@ -105,16 +119,16 @@ window.addEventListener("resize", () => {
 
 animate();
 
-// Load game from URL (?game=Name)
+// Load view from URL (?view=Name)
 const params = new URLSearchParams(window.location.search);
-const game = params.get("view");
+const view = params.get("view");
 
-if (game) {
-    document.getElementById("gameFrame").src = "GAMESHTML/" + view + ".html";
+if (view) {
+    document.getElementById("viewFrame").src = "GAMESHTML/" + view + ".html";
 }
 
 function toggleFullscreen() {
-    const frame = document.getElementById("gameFrame");
+    const frame = document.getElementById("viewFrame");
 
     if (!document.fullscreenElement) {
         if (frame.requestFullscreen) {
