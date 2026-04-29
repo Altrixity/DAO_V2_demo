@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Games | DAO V2</title>
     <link rel="stylesheet" href="main.css">
+    <title>View Loader</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background: black;
         }
+
         canvas {
             position: fixed;
             top: 0;
             left: 0;
             z-index: -1;
         }
+
+        iframe {
+            width: 1000px;
+            height: 600px;
+            border: 10px solid rgb(113, 210, 255);
+            position: relative;
+            z-index: 1;
+        }
+
+        #fsBtn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 8px 12px;
+            border-radius: 25px;
+            background: rgb(113, 210, 255);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
     </style>
 </head>
-
 <body>
 
 <canvas id="rain"></canvas>
 
 <header>
-    <h2>DAO</h2><h2 class="colorchangev2">V2</h2>
+    <h2>DAO</h2><h2 class="colorchangev2">V2 </h2><h2>Player</h2>
 </header>
 
-<div>
-    <h3 class="welcome">Built in Games</h3>
-    <p class="warnload">Some Games may not load, and some may have ads. We are truly sorry and hope to resolve this issue soon.</p>
-    <br>
-    <hr class="linebg">
-    <br>
+<button id="fsBtn" onclick="toggleFullscreen()">Fullscreen</button>
 
-    <div class="AppsGames">
-        <a href="player.html?view=DokiDoki"><img class="icon" src="Icons/DokiDokiIcon.png"></a>
-        <a href="player.html?view=OVOfixed"><img class="icon" src="Icons/ovofixedIcon.png"></a>
-        <a href="player.html?view=BasketRando"><img class="icon" src="Icons/BasketRandomIcon.png"></a>
-        <a href="player.html?view=SonicCD"><img class="icon" src="Icons/SonicCDIcon.png"></a>
-        <a href="player.html?view=CaseohsBasics"><img class="icon" src="Icons/CaseohIcon.png"></a>
-        <a href="player.html?view=Dadish"><img class="icon" src="Icons/DadishIcon.png"></a>
-        <a href="player.html?view=09"><img class="icon" src="Icons/09icon.png"></a>
-        <a href="player.html?view=BitLife"><img class="icon" src="Icons/BitLifeIcon.png"></a>
-    </div>
-
-    <div class="cloakstyle">
-        <button class="cloakbutton" onclick="cloakPage()">Cloak This Page!</button>
-    </div>
-</div>
+<iframe id="viewFrame"></iframe>
 
 <script>
 const canvas = document.getElementById("rain");
@@ -103,15 +105,28 @@ window.addEventListener("resize", () => {
 
 animate();
 
-function cloakPage() {
-    const newTab = window.open('about:blank', '_blank');
-    const pageContent = document.documentElement.outerHTML;
+// Load view from URL (?view=Name)
+const params = new URLSearchParams(window.location.search);
+const view = params.get("view");
 
-    newTab.document.open();
-    newTab.document.write(pageContent);
-    newTab.document.close();
+if (view) {
+    document.getElementById("viewFrame").src = "GAMESHTML/" + view + ".html";
+}
 
-    window.location.replace('https://www.drive.google.com');
+function toggleFullscreen() {
+    const frame = document.getElementById("viewFrame");
+
+    if (!document.fullscreenElement) {
+        if (frame.requestFullscreen) {
+            frame.requestFullscreen();
+        } else if (frame.webkitRequestFullscreen) {
+            frame.webkitRequestFullscreen();
+        } else if (frame.msRequestFullscreen) {
+            frame.msRequestFullscreen();
+        }
+    } else {
+        document.exitFullscreen();
+    }
 }
 </script>
 
