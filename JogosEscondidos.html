@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Games | DAO V2</title>
     <link rel="stylesheet" href="main.css">
     <title>View Loader</title>
     <style>
@@ -17,7 +18,7 @@
             z-index: -1;
         }
 
-        embed {
+        iframe {
             width: 1000px;
             height: 600px;
             border: 10px solid rgb(113, 210, 255);
@@ -39,72 +40,51 @@
         }
     </style>
 </head>
+
 <body>
 
 <canvas id="rain"></canvas>
 
 <header>
+    <h2>DAO</h2><h2 class="colorchangev2">V2</h2>
     <h2>DAO</h2><h2 class="colorchangev2">V2 </h2><h2>Player</h2>
 </header>
 
+<div>
+    <h3 class="welcome">Built in Games</h3>
+    <p class="warnload">Some Games may not load, and some may have ads. We are truly sorry and hope to resolve this issue soon.</p>
+    <br>
+    <hr class="linebg">
+    <br>
+
+    <div class="AppsGames">
+        <a href="player.html?view=DokiDoki"><img class="icon" src="Icons/DokiDokiIcon.png"></a>
+        <a href="player.html?view=OVOfixed"><img class="icon" src="Icons/ovofixedIcon.png"></a>
+        <a href="player.html?view=BasketRando"><img class="icon" src="Icons/BasketRandomIcon.png"></a>
+        <a href="player.html?view=SonicCD"><img class="icon" src="Icons/SonicCDIcon.png"></a>
+        <a href="player.html?view=CaseohsBasics"><img class="icon" src="Icons/CaseohIcon.png"></a>
+        <a href="player.html?view=Dadish"><img class="icon" src="Icons/DadishIcon.png"></a>
+        <a href="player.html?view=09"><img class="icon" src="Icons/09icon.png"></a>
+        <a href="player.html?view=BitLife"><img class="icon" src="Icons/BitLifeIcon.png"></a>
+    </div>
+
+    <div class="cloakstyle">
+        <button class="cloakbutton" onclick="cloakPage()">Cloak This Page!</button>
+    </div>
+</div>
 <button id="fsBtn" onclick="toggleFullscreen()">Fullscreen</button>
 
-<embed id="viewFrame"></embed>
+<iframe id="viewFrame"></iframe>
 
 <script>
 const canvas = document.getElementById("rain");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let raindrops = [];
-
-for (let i = 0; i < 400; i++) {
-    raindrops.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        length: Math.random() * 20 + 10,
-        speed: Math.random() * 4 + 4
-    });
-}
-
-function drawRain() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.strokeStyle = "rgba(180, 180, 180, 0.7)";
-    ctx.lineWidth = 1;
-
-    for (let i = 0; i < raindrops.length; i++) {
-        let r = raindrops[i];
-
-        ctx.beginPath();
-        ctx.moveTo(r.x, r.y);
-        ctx.lineTo(r.x, r.y + r.length);
-        ctx.stroke();
-
-        r.y += r.speed;
-
-        if (r.y > canvas.height) {
-            r.y = -20;
-            r.x = Math.random() * canvas.width;
-        }
-    }
-}
-
-function animate() {
-    drawRain();
-    requestAnimationFrame(animate);
-}
-
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+@@ -103,15 +105,28 @@ <h3 class="welcome">Built in Games</h3>
 
 animate();
 
+function cloakPage() {
+    const newTab = window.open('about:blank', '_blank');
+    const pageContent = document.documentElement.outerHTML;
 // Load view from URL (?view=Name)
 const params = new URLSearchParams(window.location.search);
 const view = params.get("view");
@@ -113,9 +93,13 @@ if (view) {
     document.getElementById("viewFrame").src = "GAMESHTML/" + view + ".html";
 }
 
+    newTab.document.open();
+    newTab.document.write(pageContent);
+    newTab.document.close();
 function toggleFullscreen() {
     const frame = document.getElementById("viewFrame");
 
+    window.location.replace('https://www.drive.google.com');
     if (!document.fullscreenElement) {
         if (frame.requestFullscreen) {
             frame.requestFullscreen();
@@ -129,6 +113,3 @@ function toggleFullscreen() {
     }
 }
 </script>
-
-</body>
-</html>
