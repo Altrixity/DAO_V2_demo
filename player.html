@@ -107,10 +107,10 @@ animate();
 
 // Load game from URL (?game=Name)
 const params = new URLSearchParams(window.location.search);
-const game = params.get("game");
+const view = params.get("view");
 
-if (game) {
-    document.getElementById("gameFrame").src = "GAMESHTML/" + game + ".html";
+if (view) {
+    document.getElementById("gameFrame").src = "GAMESHTML/" + view + ".html";
 }
 
 function toggleFullscreen() {
